@@ -373,9 +373,9 @@ passport.use(oidcStrategy);
 server.get('/tasks', passport.authenticate('oauth-bearer', {
     session: false
 }), listTasks);
-/* server.get('/tasks', passport.authenticate('oauth-bearer', {
+server.head('/tasks', passport.authenticate('oauth-bearer', {
     session: false
-}), listTasks); */
+}), listTasks);
 server.get('/tasks/:owner', passport.authenticate('oauth-bearer', {
     session: false
 }), getTask);
@@ -407,7 +407,9 @@ server.del('/tasks', passport.authenticate('oauth-bearer', {
 
 // Register a default '/' handler
 
-server.get('/', function root(req, res, next) {
+server.get('/', passport.authenticate('oauth-bearer', {
+    session: false
+}), function root(req, res, next) {
     var routes = [
         'GET     /',
         'POST    /tasks/:owner/:task',
