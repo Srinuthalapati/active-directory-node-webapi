@@ -47,8 +47,8 @@ var options = {
 };
 
 // array to hold logged in users and the current logged in user (owner)
-var users = [];
-var owner = null;
+var users = ['shanmuga.nuthalapati2@t-mobile.com'];
+var owner = 'shanmuga.nuthalapati2@t-mobile.com';
 
 // Our logger
 var log = bunyan.createLogger({
